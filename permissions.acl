@@ -1,0 +1,37 @@
+/**
+ * Access Control List for the ticket marketplace network.
+ */
+
+rule EventHost  {
+    description: "Allow the event host full access"
+    participant: "org.ibm.demo.ticketmarketplace.EventHost"
+    operation: ALL
+    resource: "org.ibm.demo.ticketmarketplace.*"
+    action: ALLOW
+}
+
+rule Member {
+    description: "Allow the member read access"
+    participant: "org.ibm.demo.ticketmarketplace.Member"
+    operation: READ
+    resource: "org.ibm.demo.ticketmarketplace.*"
+    action: ALLOW
+}
+
+rule TicketOwner {
+    description: "Allow the owner of a ticket  total access"
+    participant(m): "org.ibm.demo.ticketmarketplace.Member"
+    operation: ALL
+    resource(t): "org.ibm.demo.ticketmarketplace.Ticket"
+    condition: (t.owner.getIdentifier() == m.getIdentifier())
+    action: ALLOW
+}
+
+rule TicketListingOwner {
+    description: "Allow the owner of a ticket  total access to their ticket listing"
+    participant(m): "org.ibm.demo.ticketmarketplace.Member"
+    operation: ALL
+    resource(t): "org.ibm.demo.ticketmarketplace.TicketListing"
+    condition: (t.ticket.owner.getIdentifier() == m.getIdentifier())
+    action: ALLOW
+}

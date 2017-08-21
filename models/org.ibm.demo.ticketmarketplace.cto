@@ -1,0 +1,93 @@
+/**
+ * Defines a data model for an event ticket marketplace
+ */
+namespace org.ibm.demo.ticketmarketplace
+
+asset TicketedEvent identified by eventId {
+   o String eventId
+   o String date
+   o String description
+   o String venue
+   o EventType eventType
+   o Integer numberOfTickets
+   --> EventHost host
+}
+
+
+enum EventType {
+    o OPEN_SEATING
+	o RESERVED_SEATING
+}
+	
+enum TicketState {
+  o UNSOLD
+  o INITIAL_SALE
+  o RESALE
+  o USED
+}
+
+enum TicketListingState {
+  o FOR_SALE
+  o SOLD
+}
+
+asset Ticket identified by ticketId {
+   o String ticketId
+   o String seatId
+   o TicketState state
+   o Double faceValue
+   o Double salePrice optional
+   --> TicketedEvent event
+   --> Member owner optional
+   --> Member lastSeller optional
+}
+   
+asset TicketListing identified by listingId {
+  o String listingId
+  o TicketListingState state
+  o Double listingPrice
+  --> Ticket ticket
+}
+
+
+abstract participant User identified by email {
+  o String email
+  o String firstName
+  o String lastName
+}
+
+participant Member extends User {
+}
+
+participant EventHost extends User {
+}
+
+transaction UseTicket  {
+   --> Ticket ticket
+}
+
+transaction SellTicket  {
+  o Double salePrice
+  --> Member buyer 
+  --> Ticket ticket
+}
+
+transaction ResellTicket {
+  o Double salePrice
+  --> Member buyer 
+  --> TicketListing listing
+}
+
+transaction CreateTicketedEvent {
+   o String eventId
+   o String date
+   o String description
+   o String venue
+   o EventType eventType
+   o Integer numberOfTickets
+   o Double ticketFaceValue
+   o EventHost host
+}
+
+
+
