@@ -1,6 +1,6 @@
 # Event Ticket Network
 
-> This is a ticket marketplace  demo for Hyperledger Composer. Create events (eg sporting events, concerts, church picnics etc) and create tickets for those events.  Event tickets can be bought at face value and then redeemed at the event. Buyers can list tickets they have bought and other buyers can buy them (usuallyat prices higher than face value).  By using a Blockchain to record all these transactions, buyers can be assured that they are buying legitimate tickets eliminating much of the fraud that happens on marketplaces like CraigsList. The blockchain will record the entire lifecycle of each ticket, from the  point when it is issued, to when it's sold (and possibly resold multiple times ) to when it is  redeeemed.
+> This is a ticket marketplace  demo for Hyperledger Composer. Create events (eg sporting events, concerts, church picnics etc) and create tickets for those events.  Event tickets can be bought at face value and then redeemed at the event. Buyers can list tickets they have bought and other buyers can buy them (usuallyat prices higher than face value).  By using a Blockchain to record all these transactions, buyers can be assured that they are buying legitimate tickets eliminating much of the fraud that happens on marketplaces like Craigslist. The blockchain will record the entire lifecycle of each ticket, from the  point when it is issued, to when it's sold (and possibly resold multiple times ) to when it is  redeeemed.
 
 This business network defines:
 
