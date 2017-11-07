@@ -78,7 +78,7 @@ Part 1. Initial set up
 Part 2. Test the Business Network
 =================================
      
-1.  Test the network by creating participants, assets and running a ffew transactions.
+1.  Test the network by creating participants, assets and running some transactions.
 
     
     In the `EventHost` participant registry, create a new participant with the following data.
